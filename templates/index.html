@@ -1,5 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Q&A App with OpenAI API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .conversation {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            text-align: right;
+            color: #007bff;
+        }
+
+        .ai-message {
+            text-align: left;
+            color: #28a745;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>AI Q&A App</h1>
+        <form action="/generate" method="post">
+            <select name="topic">
+                <option value="general">General</option>
+                <option value="technology">Technology</option>
+                <option value="science">Science</option>
+            </select>
+            <textarea name="question" placeholder="Enter your question"></textarea>
+            <button type="submit">Ask</button>
+        </form>
+
+        {% if conversations %}
+        <div class="conversation">
+            <h2>Conversation History</h2>
+            {% for question, answer in conversations %}
+            <div class="message user-message">
+                <p><strong>You:</strong> {{ question }}</p>
+            </div>
+            <div class="message ai-message">
+                <p><strong>AI:</strong> {{ answer }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,3 +130,4 @@
     {% endif %}
 </body>
 </html>
+-->
